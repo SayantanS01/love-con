@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String        @id @default(cuid())
+  username  String        @unique
+  password  String
+  role      String        @default("USER")
+  lastActive DateTime?
+  createdAt DateTime      @default(now())
+  messages  ChatMessage[] @relation("SentMessages")
+  diary     DiaryEntry[]
+  moments   Moment[]
+  photos    Photo[]
+  auditLogs ActivityLog[]
+}
+
+model GlobalSetting {
+  id           String @id @default("singleton")
+  primaryColor String @default("#ab2c5d")
+  accentColor  String @default("#ffe3e8")
+  activeSongId String @default("P-qXpD_Y88o") // Sitaare by Arijit Singh
+  updatedAt    DateTime @updatedAt
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  action    String
+  username  String
+  userId    String
+  timestamp DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Moment {
+  id        String   @id @default(cuid())
+  title     String
+  date      DateTime
+  photoUrl  String?
+  note      String?
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Photo {
+  id        String   @id @default(cuid())
+  caption   String?
+  imageUrl  String
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model DiaryEntry {
+  id        String   @id @default(cuid())
+  content   String
+  moodTag   String?
+  photoUrl  String?
+  date      DateTime @default(now())
+  userId    String
+  replies   String?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  content   String
+  senderId  String
+  timestamp DateTime @default(now())
+  sender    User     @relation("SentMessages", fields: [senderId], references: [id])
+}
