@@ -18,11 +18,22 @@ export default function ApologyPage() {
 
   const handleSend = async () => {
     setIsSending(true)
-    // Simulate API call for apology
-    setTimeout(() => {
-      setShowHeart(true)
+    try {
+      const res = await fetch('/api/apology', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: apologyMessage }),
+      })
+      if (res.ok) {
+        setShowHeart(true)
+      } else {
+        console.error('Failed to seal reflection')
+      }
+    } catch (err) {
+      console.error(err)
+    } finally {
       setIsSending(false)
-    }, 1500)
+    }
   }
 
   return (

@@ -1,10 +1,22 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Sparkles, Calendar, BookOpen, Image as ImageIcon, User, Clock, Star } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardHome() {
+  const [apologies, setApologies] = useState<any[]>([])
+
+  useEffect(() => {
+    fetch('/api/apology')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setApologies(data)
+      })
+      .catch(err => console.error(err))
+  }, [])
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -123,6 +135,29 @@ export default function DashboardHome() {
           </div>
         </div>
       </motion.div>
+
+      {/* Emerging Healing Haven Reflections */}
+      {apologies.length > 0 && (
+        <motion.div variants={item} className="w-full max-w-4xl py-20 px-4 flex flex-col items-center border-t border-primary/5 mt-10">
+          <div className="text-center space-y-4 mb-16">
+            <h3 className="text-5xl font-editorial text-[#ba1a1a]">Recent Reflections</h3>
+            <p className="text-on-surface-variant/40 italic font-editorial text-2xl">Echoes of healing from the past 72 hours.</p>
+          </div>
+          
+          <div className="w-full space-y-8">
+            {apologies.map((apology) => (
+              <div key={apology.id} className="p-10 rounded-[2.5rem] glass border-none shadow-sm space-y-4 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#ba1a1a]/20" />
+                <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-[#ba1a1a]/60">
+                  <span className="flex items-center gap-2"><Heart size={12} fill="#ba1a1a" /> {apology.user?.username || 'Unknown'}</span>
+                  <span>{new Date(apology.createdAt).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                </div>
+                <p className="text-2xl sm:text-3xl font-editorial italic text-on-surface leading-relaxed pl-4">"{apology.message}"</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
 
       {/* Decorative Finality */}
       <motion.div variants={item} className="flex flex-col items-center gap-10 opacity-20 py-32 pb-60">
