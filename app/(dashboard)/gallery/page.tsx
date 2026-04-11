@@ -21,7 +21,7 @@ export default function GalleryPage() {
 
   const fetchPhotos = async () => {
     try {
-      const res = await fetch('/api/photos')
+      const res = await fetch('/api/gallery')
       if (res.ok) setPhotos(await res.json())
     } catch (err) {
       console.error('Failed to fetch gallery')
