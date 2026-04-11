@@ -9,6 +9,9 @@ interface Message {
   content: string
   senderId: string
   timestamp: string
+  sender: {
+    username: string
+  }
 }
 
 export default function SidebarChat() {
@@ -138,7 +141,12 @@ export default function SidebarChat() {
                           msg.senderId === currentUserId ? 'text-white/80' : 'text-primary'
                         }`}>
                           <User size={16} strokeWidth={1} /> 
-                          {msg.senderId === currentUserId ? 'THE ARCHITECT' : 'MAMPI BISWAS'}
+                          {msg.sender?.username?.toLowerCase().includes('mampi') 
+                            ? 'MAMPI' 
+                            : msg.sender?.username?.toLowerCase().includes('sayan')
+                            ? 'SAYANTAN'
+                            : msg.sender?.username?.toUpperCase() || 'UNKNOWN'
+                          }
                         </div>
                         <p className="text-3xl font-editorial leading-snug tracking-tight italic">"{msg.content}"</p>
                         
