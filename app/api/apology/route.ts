@@ -7,14 +7,10 @@ export async function GET() {
     const session = await getSession()
     if (!session) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-    // Rule: Apologies are only visible for exactly 3 days (72 hours)
-    const threeDaysAgo = new Date()
-    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3)
-
     const apologies = await prisma.apology.findMany({
       where: {
-        createdAt: {
-          gte: threeDaysAgo
+        userId: {
+          not: session.id
         }
       },
       orderBy: { createdAt: 'desc' },

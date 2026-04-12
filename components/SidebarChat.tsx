@@ -74,16 +74,16 @@ export default function SidebarChat() {
 
   return (
     <>
-      <div className="fixed top-12 right-12 z-[150]">
+      <div className="fixed top-24 right-4 sm:top-12 sm:right-12 z-[150]">
         <motion.button
           whileHover={{ scale: 1.1, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(true)}
-          className="p-6 bg-primary text-white rounded-full shadow-premium flex items-center justify-center relative group"
+          className="p-4 sm:p-6 bg-primary text-white rounded-full shadow-premium flex items-center justify-center relative group"
         >
-          <MessageCircle size={36} strokeWidth={1} />
-          <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform">
-            <Heart size={12} fill="currentColor" className="text-primary animate-pulse" />
+          <MessageCircle size={28} strokeWidth={1} className="sm:w-[36px] sm:h-[36px]" />
+          <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform">
+            <Heart size={10} fill="currentColor" className="text-primary animate-pulse sm:w-3 sm:h-3" />
           </div>
         </motion.button>
       </div>

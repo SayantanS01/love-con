@@ -46,9 +46,9 @@ export default function MomentsPage() {
           <Calendar size={100} strokeWidth={1} />
         </motion.div>
         
-        <div className="space-y-4">
-          <h1 className="text-9xl font-editorial text-on-surface tracking-tighter leading-none">Shared Moments</h1>
-          <p className="text-on-surface-variant/40 font-editorial italic text-3xl">The rhythmic timestamps of our collective heartbeats.</p>
+        <div className="space-y-4 w-full">
+          <h1 className="font-editorial text-on-surface tracking-tight leading-none break-words w-full px-6 overflow-visible py-2" style={{ fontSize: 'clamp(3rem, 15vw, 6rem)' }}>Shared Moments</h1>
+          <p className="text-on-surface-variant/40 font-editorial italic text-xl sm:text-3xl px-2">The rhythmic timestamps of our collective heartbeats.</p>
         </div>
 
         <motion.button

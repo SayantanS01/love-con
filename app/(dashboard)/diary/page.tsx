@@ -48,9 +48,9 @@ export default function DiaryPage() {
           <BookOpen size={100} strokeWidth={1} />
         </motion.div>
         
-        <div className="space-y-4">
-          <h1 className="text-9xl font-editorial text-on-surface tracking-tighter leading-none">Whispered Diary</h1>
-          <p className="text-on-surface-variant/40 font-editorial italic text-3xl">Deep reflections saved for eternity.</p>
+        <div className="space-y-4 w-full">
+          <h1 className="font-editorial text-on-surface tracking-tight leading-none break-words w-full px-6 overflow-visible py-2" style={{ fontSize: 'clamp(3rem, 15vw, 6rem)' }}>Whispered Diary</h1>
+          <p className="text-on-surface-variant/40 font-editorial italic text-xl sm:text-3xl px-2">Deep reflections saved for eternity.</p>
         </div>
 
         <motion.button

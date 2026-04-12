@@ -7,25 +7,25 @@ datasource db {
 }
 
 model User {
-  id        String        @id @default(cuid())
-  username  String        @unique
-  password  String
-  role      String        @default("USER")
+  id         String        @id @default(cuid())
+  username   String        @unique
+  password   String
+  role       String        @default("USER")
   lastActive DateTime?
-  createdAt DateTime      @default(now())
-  messages  ChatMessage[] @relation("SentMessages")
-  diary     DiaryEntry[]
-  moments   Moment[]
-  photos    Photo[]
-  auditLogs ActivityLog[]
-  apologies Apology[]
+  createdAt  DateTime      @default(now())
+  auditLogs  ActivityLog[]
+  apologies  Apology[]
+  messages   ChatMessage[] @relation("SentMessages")
+  diary      DiaryEntry[]
+  moments    Moment[]
+  photos     Photo[]
 }
 
 model GlobalSetting {
-  id           String @id @default("singleton")
-  primaryColor String @default("#ab2c5d")
-  accentColor  String @default("#ffe3e8")
-  activeSongId String @default("P-qXpD_Y88o") // Sitaare by Arijit Singh
+  id           String   @id @default("singleton")
+  primaryColor String   @default("#ab2c5d")
+  accentColor  String   @default("#ffe3e8")
+  activeSongId String   @default("P-qXpD_Y88o")
   updatedAt    DateTime @updatedAt
 }
 
@@ -85,4 +85,3 @@ model Apology {
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
 }
-

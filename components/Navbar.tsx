@@ -44,11 +44,11 @@ export default function Navbar() {
                 href={item.path}
                 onMouseEnter={() => setIsHovered(item.path)}
                 onMouseLeave={() => setIsHovered(null)}
-                className={`relative p-4 flex items-center justify-center transition-all duration-500 rounded-full group/nav ${
+                className={`relative p-2 sm:p-4 flex items-center justify-center transition-all duration-500 rounded-full group/nav ${
                   isActive ? 'text-primary' : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
                 }`}
               >
-                <item.icon size={22} strokeWidth={1} className={`${isActive ? 'animate-pulse scale-125' : 'group-hover/nav:scale-110'}`} />
+                <item.icon size={20} strokeWidth={1} className={`sm:w-[22px] sm:h-[22px] ${isActive ? 'animate-pulse scale-125' : 'group-hover/nav:scale-110'}`} />
                 
                 <AnimatePresence>
                   {isHovered === item.path && (
@@ -56,7 +56,7 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: 10, scale: 0.8 }}
                       animate={{ opacity: 1, y: -45, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                      className="absolute bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary shadow-lg border-none whitespace-nowrap pointer-events-none"
+                      className="absolute bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary shadow-lg border-none whitespace-nowrap pointer-events-none hidden sm:block"
                     >
                       {item.name}
                       <Sparkles size={8} className="absolute -top-1 -right-1 text-primary animate-pulse" />
@@ -76,26 +76,26 @@ export default function Navbar() {
           })}
         </div>
 
-        <div className="h-8 w-[1px] bg-primary/10 mx-2" />
+        <div className="h-6 sm:h-8 w-[1px] bg-primary/10 mx-1 sm:mx-2" />
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {isAdmin && (
             <Link 
               href="/admin" 
               onMouseEnter={() => setIsHovered('/admin')}
               onMouseLeave={() => setIsHovered(null)}
-              className={`relative p-4 flex items-center justify-center transition-all duration-500 rounded-full group/nav ${
+              className={`relative p-2 sm:p-4 flex items-center justify-center transition-all duration-500 rounded-full group/nav ${
                 pathname === '/admin' ? 'text-primary' : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
               }`}
             >
-              <Settings size={22} strokeWidth={1} className={pathname === '/admin' ? 'rotate-90 scale-125' : 'group-hover/nav:rotate-12 transition-transform'} />
+              <Settings size={20} strokeWidth={1} className={`sm:w-[22px] sm:h-[22px] ${pathname === '/admin' ? 'rotate-90 scale-125' : 'group-hover/nav:rotate-12 transition-transform'}`} />
               <AnimatePresence>
                 {isHovered === '/admin' && (
                   <motion.span
                     initial={{ opacity: 0, y: 10, scale: 0.8 }}
                     animate={{ opacity: 1, y: -45, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                    className="absolute bg-on-surface text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg border-none whitespace-nowrap pointer-events-none"
+                    className="absolute bg-on-surface text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg border-none whitespace-nowrap pointer-events-none hidden sm:block"
                   >
                     Sanctuary Controls
                   </motion.span>
@@ -108,12 +108,12 @@ export default function Navbar() {
             href="/profile" 
             onMouseEnter={() => setIsHovered('/profile')}
             onMouseLeave={() => setIsHovered(null)}
-            className={`relative p-4 flex items-center justify-center transition-all duration-500 rounded-full group/nav ${
+            className={`relative p-2 sm:p-4 flex items-center justify-center transition-all duration-500 rounded-full group/nav ${
               pathname === '/profile' ? 'text-primary' : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
             }`}
           >
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${pathname === '/profile' ? 'bg-primary text-white scale-125 shadow-md' : 'bg-primary/10 text-primary'}`}>
-              <User size={18} strokeWidth={1} />
+            <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${pathname === '/profile' ? 'bg-primary text-white scale-125 shadow-md' : 'bg-primary/10 text-primary'}`}>
+              <User size={16} strokeWidth={1} className="sm:w-[18px] sm:h-[18px]" />
             </div>
             <AnimatePresence>
               {isHovered === '/profile' && (

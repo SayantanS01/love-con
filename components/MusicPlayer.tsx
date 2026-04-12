@@ -27,7 +27,7 @@ export default function MusicPlayer() {
   }, [isPlaying, isMuted, isLocal, activeSongId])
 
   return (
-    <div className="fixed bottom-8 left-8 z-[120]">
+    <div className="fixed bottom-[130px] left-4 sm:bottom-[100px] sm:left-10 z-[120]">
       <motion.div 
         className="flex items-center gap-4"
         onMouseEnter={() => setShowPlayer(true)}
@@ -37,11 +37,11 @@ export default function MusicPlayer() {
           whileHover={{ scale: 1.1, rotate: [0, 10, -10, 0] }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsPlaying(!isPlaying)}
-          className={`p-6 rounded-full shadow-premium flex items-center justify-center transition-all duration-700 ${
+          className={`p-4 sm:p-6 rounded-full shadow-premium flex items-center justify-center transition-all duration-700 ${
             isPlaying ? 'bg-primary text-white scale-110' : 'bg-white text-primary'
           }`}
         >
-          {isPlaying ? <Music size={28} strokeWidth={1} className={isLocal ? "animate-spin-slow" : "animate-pulse"} /> : <Play size={28} strokeWidth={1} />}
+          {isPlaying ? <Music size={24} strokeWidth={1} className={`sm:w-[28px] sm:h-[28px] ${isLocal ? "animate-spin-slow" : "animate-pulse"}`} /> : <Play size={24} strokeWidth={1} className="sm:w-[28px] sm:h-[28px]" />}
         </motion.button>
 
         <AnimatePresence>
