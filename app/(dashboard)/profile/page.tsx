@@ -53,117 +53,135 @@ export default function ProfilePage() {
   )
 
   return (
-    <div className="max-w-7xl mx-auto space-y-24 pb-32 flex flex-col items-center">
+    <div className="max-w-6xl mx-auto space-y-32 pb-48 flex flex-col items-center px-6">
       {/* Centered Hero Identification */}
-      <header className="text-center space-y-8 gsap-entrance">
+      <header className="text-center space-y-12 gsap-entrance relative pt-20">
+        {/* Floating Decor */}
+        <div className="candy-glow w-[400px] h-[400px] bg-primary/5 top-0 left-1/2 -translate-x-1/2" />
+        
         <motion.div 
-          initial={{ scale: 0.5, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="w-48 h-48 bg-primary/5 rounded-full flex items-center justify-center text-primary mx-auto relative group shadow-premium"
+          className="relative z-10"
         >
-          <User size={96} strokeWidth={1} />
-          <div className="absolute inset-0 bg-primary/5 rounded-full scale-0 group-hover:scale-150 transition-transform duration-1000 opacity-0 group-hover:opacity-100" />
-          <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -bottom-2 -right-2 bg-white p-4 rounded-full shadow-md text-primary">
-            <Sparkles size={24} strokeWidth={1} />
-          </motion.div>
+          <div className="w-56 h-56 bg-white rounded-full flex items-center justify-center text-primary mx-auto relative shadow-vibrant border-4 border-white/80">
+            <User size={100} strokeWidth={1} />
+            <motion.div 
+              animate={{ scale: [1, 1.1, 1] }} 
+              transition={{ repeat: Infinity, duration: 4 }} 
+              className="absolute -bottom-2 -right-2 bg-vibrant-gradient p-5 rounded-full shadow-premium text-white"
+            >
+              <ShieldCheck size={32} strokeWidth={1.5} />
+            </motion.div>
+          </div>
         </motion.div>
         
-        <div className="space-y-2">
-          <h1 className="text-8xl font-editorial text-on-surface tracking-tighter leading-none">Your Identity</h1>
-          <p className="text-on-surface-variant/40 font-editorial italic text-2xl">A balanced reflection of your presence in our world.</p>
+        <div className="space-y-4 relative z-10">
+          <h1 className="text-7xl sm:text-9xl font-editorial text-vibrant-gradient tracking-tighter leading-none">Your Identity</h1>
+          <p className="text-on-surface-variant/40 font-editorial italic text-2xl sm:text-3xl max-w-2xl mx-auto">"A balanced reflection of your presence in our world."</p>
         </div>
       </header>
 
-      {/* Synchronized Full-Width Board */}
-      <div className="sanctuary-board w-full flex flex-col items-center gap-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 w-full items-start">
+      {/* Synchronized Board */}
+      <div className="sanctuary-board w-full relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 w-full items-start relative z-10">
           
           {/* Detailed Fragments (User Info) */}
           <div className="space-y-16">
             <div className="space-y-12">
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.5em] text-primary flex items-center gap-3">
-                <User size={14} strokeWidth={1} /> Fragment of Existence
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.5em] text-primary/60 flex items-center gap-4">
+                <Sparkles size={16} strokeWidth={1.5} /> Fragment of Existence
               </h2>
               
-              <div className="space-y-10 group/item">
-                <div className="space-y-2">
-                  <span className="text-[10px] uppercase font-bold text-on-surface-variant/40 tracking-widest px-1">Chosen Username</span>
-                  <div className="bg-surface-container-low rounded-3xl p-8 flex items-center justify-between group-hover/item:bg-primary/5 transition-colors duration-500">
-                    <p className="text-4xl font-editorial text-on-surface">{userData.username}</p>
-                    <Mail size={24} className="text-primary/20" />
+              <div className="space-y-12">
+                <div className="space-y-4 group">
+                  <span className="text-[10px] uppercase font-bold text-on-surface-variant/30 tracking-[0.4em] px-2">Chosen Username</span>
+                  <div className="bg-white/40 rounded-[2rem] p-10 flex items-center justify-between border border-white/60 shadow-sm transition-all group-hover:border-primary/20">
+                    <p className="text-4xl sm:text-5xl font-editorial text-on-surface">{userData.username}</p>
+                    <Mail size={28} className="text-primary/30" strokeWidth={1} />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <span className="text-[10px] uppercase font-bold text-on-surface-variant/40 tracking-widest px-1">Sanctuary Role</span>
-                  <div className="bg-surface-container-low rounded-3xl p-8 flex items-center justify-between group-hover/item:bg-primary/5 transition-colors duration-500">
-                    <p className="text-4xl font-editorial text-primary">{userData.role}</p>
-                    {userData.role === 'ADMIN' && <ShieldCheck size={28} className="text-primary" strokeWidth={1} />}
+                <div className="space-y-4 group">
+                  <span className="text-[10px] uppercase font-bold text-on-surface-variant/30 tracking-[0.4em] px-2">Sanctuary Role</span>
+                  <div className="bg-white/40 rounded-[2rem] p-10 flex items-center justify-between border border-white/60 shadow-sm transition-all group-hover:border-primary/20">
+                    <p className="text-4xl sm:text-5xl font-editorial text-vibrant-gradient font-bold">{userData.role}</p>
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                      <Lock size={20} strokeWidth={1.5} />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-10 border-t border-primary/5 flex items-center gap-4 text-on-surface-variant/40 italic font-editorial text-xl">
-              <Calendar size={28} strokeWidth={1} />
+            <div className="pt-12 border-t border-primary/5 flex items-center gap-6 text-on-surface-variant/40 italic font-editorial text-2xl">
+              <Calendar size={32} strokeWidth={1} className="text-primary" />
               <span>Registered in the Archive: 2024</span>
             </div>
           </div>
 
           {/* Secret Code Manifest (Password Form) */}
-          <div className="space-y-12">
-            <h2 className="text-[11px] font-bold uppercase tracking-[0.5em] text-primary flex items-center gap-3">
-              <Lock size={14} strokeWidth={1} /> Secure Reflection
-            </h2>
+          <div className="space-y-16">
+            <div className="space-y-12">
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.5em] text-primary/60 flex items-center gap-4">
+                <Lock size={16} strokeWidth={1.5} /> Secure Reflection
+              </h2>
 
-            <form onSubmit={handlePasswordChange} className="space-y-10">
-              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest px-4">New Secret Code</label>
-                <input
-                  type="password"
-                  required
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  placeholder="********"
-                  className="w-full bg-white/60 border-none rounded-full px-12 py-8 focus:ring-4 focus:ring-primary/5 transition-all text-2xl outline-none shadow-sm italic font-editorial"
-                />
+              <form onSubmit={handlePasswordChange} className="space-y-12">
+                <div className="space-y-6">
+                  <label className="text-[10px] font-bold text-on-surface-variant/30 uppercase tracking-[0.4em] px-4">New Secret Code</label>
+                  <div className="relative">
+                    <input
+                      type="password"
+                      required
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      placeholder="Whisper a new code..."
+                      className="premium-input text-2xl h-24 italic font-editorial px-12"
+                    />
+                    <div className="absolute right-8 top-1/2 -translate-y-1/2 text-primary/20">
+                      <Heart size={24} />
+                    </div>
+                  </div>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  disabled={isChanging || !newPassword.trim()}
+                  className={`w-full h-24 rounded-full font-bold text-xs uppercase tracking-[0.5em] transition-all flex items-center justify-center gap-6 disabled:opacity-50 ${
+                    success ? 'bg-green-500 text-white shadow-[0_15px_30px_rgba(34,197,94,0.3)]' : 'premium-button'
+                  }`}
+                >
+                  {isChanging ? <Loader2 className="animate-spin" size={28} strokeWidth={1.5} /> : success ? <Check size={28} strokeWidth={2} /> : <Lock size={28} strokeWidth={1.5} />}
+                  <span>{success ? 'Code Sealed' : 'Update Secret Code'}</span>
+                </motion.button>
+              </form>
+
+              <div className="p-10 bg-white/40 rounded-[2.5rem] border border-white/60 italic text-on-surface-variant/50 text-xl font-editorial leading-relaxed">
+                 <p>
+                   "Ensure your secret code is memorable yet protective. A reflection of your commitment to our world's security."
+                 </p>
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={isChanging || !newPassword.trim()}
-                className={`w-full py-8 rounded-full font-bold text-xs uppercase tracking-[0.5em] shadow-premium transition-all flex items-center justify-center gap-4 disabled:opacity-50 ${
-                  success ? 'bg-green-500 text-white' : 'bg-primary text-white'
-                }`}
-              >
-                {isChanging ? <Loader2 className="animate-spin" size={24} strokeWidth={1} /> : success ? <Check size={24} strokeWidth={1} /> : <Lock size={24} strokeWidth={1} />}
-                <span>{success ? 'Code Sealed' : 'Update Secret Code'}</span>
-              </motion.button>
-            </form>
-
-            <div className="p-10 bg-primary/5 rounded-[2.5rem] border border-primary/5">
-               <p className="text-xs text-on-surface-variant/60 leading-relaxed tracking-wider font-sans font-medium uppercase">
-                 * Ensure your secret code is memorable yet protective. A reflection of your commitment to our world's security.
-               </p>
             </div>
           </div>
         </div>
 
         {/* Distributed Centered Logout */}
-        <div className="w-full pt-12 border-t border-primary/5 flex justify-center">
+        <div className="w-full mt-24 pt-16 border-t border-primary/5 flex justify-center relative z-10">
           <motion.button
-            whileHover={{ scale: 1.05, x: 5 }}
+            whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={async () => {
               await fetch('/api/auth/logout', { method: 'POST' })
               window.location.href = '/login'
             }}
-            className="flex items-center gap-6 text-on-surface-variant/40 hover:text-[#ba1a1a] transition-all font-bold uppercase tracking-[0.6em] text-xs group"
+            className="flex flex-col items-center gap-6 text-on-surface-variant/40 hover:text-primary transition-all group"
           >
-            <LogOut size={32} strokeWidth={1} className="group-hover:rotate-12 transition-transform" />
-            <span>Evaporate Presence</span>
+            <div className="w-20 h-20 rounded-full bg-surface-container-low flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+              <LogOut size={32} strokeWidth={1} className="group-hover:rotate-12 transition-transform" />
+            </div>
+            <span className="font-bold uppercase tracking-[0.8em] text-[10px]">Evaporate Presence</span>
           </motion.button>
         </div>
       </div>
