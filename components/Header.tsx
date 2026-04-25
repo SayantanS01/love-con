@@ -15,8 +15,8 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               className="hidden sm:block"
             >
-              <h2 className="font-editorial text-xl text-on-surface font-bold leading-none">Sanctuary</h2>
-              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">Our Shared Space</p>
+              <h2 className="font-editorial text-2xl font-bold leading-none text-vibrant-gradient">Sanctuary</h2>
+              <p className="text-[10px] text-on-surface-variant uppercase tracking-[0.4em] mt-1 opacity-60">Our Shared Space</p>
             </motion.div>
           </Link>
         </div>

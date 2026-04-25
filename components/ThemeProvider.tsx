@@ -12,8 +12,8 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [primaryColor, setPrimaryColor] = useState('#ab2c5d')
-  const [accentColor, setAccentColor] = useState('#ffe3e8')
+  const [primaryColor, setPrimaryColor] = useState('#ff3366')
+  const [accentColor, setAccentColor] = useState('#fff0f3')
   const [activeSongId, setActiveSongId] = useState('P-qXpD_Y88o')
 
   useEffect(() => {

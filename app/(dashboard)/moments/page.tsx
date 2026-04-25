@@ -42,23 +42,23 @@ export default function MomentsPage() {
         <motion.div
           animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
           transition={{ repeat: Infinity, duration: 5 }}
-          className="text-primary flex justify-center"
+          className="text-primary flex justify-center drop-shadow-[0_0_20px_rgba(255,51,102,0.3)]"
         >
-          <Calendar size={100} strokeWidth={1} />
+          <Calendar size={120} strokeWidth={1} />
         </motion.div>
         
-        <div className="space-y-4 w-full">
-          <h1 className="font-editorial text-on-surface tracking-tight leading-none break-words w-full px-6 overflow-visible py-2" style={{ fontSize: 'clamp(3rem, 15vw, 6rem)' }}>Shared Moments</h1>
-          <p className="text-on-surface-variant/40 font-editorial italic text-xl sm:text-3xl px-2">The rhythmic timestamps of our collective heartbeats.</p>
+        <div className="space-y-6 w-full">
+          <h1 className="font-editorial text-vibrant-gradient tracking-tighter leading-none break-words w-full px-6 overflow-visible py-2" style={{ fontSize: 'clamp(3.5rem, 18vw, 8rem)' }}>Shared Moments</h1>
+          <p className="text-on-surface-variant/40 font-editorial italic text-2xl sm:text-4xl px-2">The rhythmic timestamps of our collective heartbeats.</p>
         </div>
 
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, y: -5 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsAddOpen(true)}
-          className="px-12 py-6 bg-primary text-white rounded-full font-bold uppercase tracking-[0.5em] text-xs shadow-premium flex items-center gap-4 mx-auto"
+          className="px-14 py-7 bg-vibrant-gradient text-white rounded-full font-bold uppercase tracking-[0.5em] text-[11px] shadow-vibrant flex items-center gap-6 mx-auto transition-all"
         >
-          <Plus size={20} strokeWidth={2} /> Capture New Fragment
+          <Plus size={24} strokeWidth={2} /> Capture New Fragment
         </motion.button>
       </header>
 
@@ -73,41 +73,45 @@ export default function MomentsPage() {
             <p className="text-xs uppercase font-bold tracking-[0.4em] text-primary/40">Start by adding your first special day.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 w-full px-4 sm:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 w-full px-6 sm:px-20 relative">
+            {/* Decorative Glows */}
+            <div className="candy-glow w-[500px] h-[500px] bg-primary/5 top-1/4 -left-20" />
+            <div className="candy-glow w-[500px] h-[500px] bg-secondary/5 bottom-1/4 -right-20" />
+
             {moments.map((moment, index) => (
               <TiltCard
                 key={moment.id}
-                className={`flex flex-col w-full ${index % 2 !== 0 ? 'md:mt-32' : ''}`}
+                className={`flex flex-col w-full relative z-10 ${index % 2 !== 0 ? 'md:mt-48' : ''}`}
               >
-                <div className="space-y-8 text-center sm:text-left flex flex-col items-center sm:items-start">
+                <div className="space-y-12 text-center sm:text-left flex flex-col items-center sm:items-start">
                   {moment.photoUrl && (
-                    <div className="w-full aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-premium relative group border border-white/20">
+                    <div className="w-full aspect-[4/5] overflow-hidden rounded-[3.5rem] shadow-vibrant relative group border-2 border-white/60">
                       <img 
                         src={moment.photoUrl} 
                         alt={moment.title}
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8 sm:p-12">
-                         <span className="text-white/80 text-[10px] uppercase font-bold tracking-[0.4em] flex items-center gap-2">
-                           <Camera size={12} /> Captured Reflection
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-10 sm:p-14">
+                         <span className="text-white/80 text-[11px] uppercase font-bold tracking-[0.4em] flex items-center gap-3">
+                           <Camera size={16} /> Captured Reflection
                          </span>
                       </div>
                     </div>
                   )}
                   
-                  <div className="space-y-6 px-4">
-                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-primary/50">
-                      <div className="flex items-center gap-2 text-primary">
-                        <Heart size={14} fill="currentColor" /> {moment.user.username}
-                      </div>
-                      <span className="opacity-30">•</span>
+                  <div className="space-y-8 px-6">
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-6 text-[11px] font-bold uppercase tracking-[0.4em] text-primary/60">
                       <div className="flex items-center gap-2">
-                        <MapPin size={12} /> {new Date(moment.date).toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' })}
+                        <Heart size={16} fill="currentColor" className="text-primary" /> {moment.user.username}
+                      </div>
+                      <span className="opacity-20">•</span>
+                      <div className="flex items-center gap-2">
+                        <MapPin size={16} /> {new Date(moment.date).toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' })}
                       </div>
                     </div>
                     
-                    <h3 className="text-4xl sm:text-5xl font-editorial text-on-surface leading-tight tracking-tight">{moment.title}</h3>
-                    <p className="text-xl sm:text-2xl font-editorial text-on-surface-variant/50 leading-relaxed italic line-clamp-3">{moment.note}</p>
+                    <h3 className="text-5xl sm:text-6xl font-editorial text-on-surface leading-tight tracking-tighter group-hover:text-vibrant-gradient transition-all">{moment.title}</h3>
+                    <p className="text-2xl sm:text-3xl font-editorial text-on-surface-variant/40 leading-relaxed italic line-clamp-3">{moment.note}</p>
                   </div>
                 </div>
               </TiltCard>

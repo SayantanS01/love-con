@@ -78,14 +78,14 @@ export default function HeartPopIcon() {
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
         shapes: ['circle'],
-        colors: ['#ab2c5d', '#ff4d8d', '#ff85b3', '#ffffff']
+        colors: ['#ff3366', '#ff85a2', '#ffd60a', '#ffffff']
       })
       confetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
         shapes: ['circle'],
-        colors: ['#ab2c5d', '#ff4d8d', '#ff85b3', '#ffffff']
+        colors: ['#ff3366', '#ff85a2', '#ffd60a', '#ffffff']
       })
     }, 250)
 
