@@ -19,7 +19,7 @@ export default function RootLayout({
         <ThemeProvider>
           <HeartParticles />
           {/* Main content wrapper with global max-width to protect from edges */}
-          <main className="flex-1 w-full max-w-screen-2xl mx-auto">
+          <main className="flex-1 w-full max-w-screen-2xl mx-auto px-4 sm:px-12">
             {children}
           </main>
         </ThemeProvider>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, Plus, Heart, Sparkles, User, Loader2, MessageSquare, Trash2 } from 'lucide-react'
 import NewDiaryEntry from '@/components/NewDiaryEntry'
 import DiaryEntryCard from '@/components/DiaryEntryCard'
+import TiltCard from '@/components/TiltCard'
 
 interface DiaryEntry {
   id: string
@@ -74,14 +75,10 @@ export default function DiaryPage() {
             <p className="text-xs uppercase font-bold tracking-[0.4em] text-primary/40">Open your heart and write the first entry.</p>
           </div>
         ) : (
-          <div className="space-y-32 flex flex-col items-center">
+          <div className="space-y-32 flex flex-col items-center w-full">
             {entries.map((entry, index) => (
-              <motion.div
+              <TiltCard
                 key={entry.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full max-w-4xl"
               >
                 <DiaryEntryCard 
@@ -89,7 +86,7 @@ export default function DiaryPage() {
                   index={index}
                   onUpdated={fetchEntries} 
                 />
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
         )}
