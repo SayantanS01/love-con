@@ -86,14 +86,14 @@ export default function DiaryEntryCard({ entry, index, onUpdated }: { entry: Dia
         </div>
       )}
 
-      <div className="flex justify-between items-start mb-10 w-full text-left">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary">
-            <User size={24} strokeWidth={1} />
+      <div className="flex flex-col items-center mb-12 w-full text-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary shadow-sm mb-2 border border-primary/5">
+            <User size={32} strokeWidth={1} />
           </div>
-          <div>
-            <p className="font-editorial text-xl text-on-surface tracking-tight">{entry.user.username}</p>
-            <p className="text-[10px] text-on-surface-variant/40 flex items-center gap-1 uppercase tracking-widest font-bold">
+          <div className="flex flex-col items-center">
+            <p className="font-editorial text-2xl text-on-surface tracking-tight leading-none mb-2">{entry.user.username}</p>
+            <p className="text-[10px] text-on-surface-variant/40 flex items-center gap-2 uppercase tracking-[0.4em] font-bold">
               <Clock size={12} strokeWidth={1} /> {new Date(entry.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function DiaryEntryCard({ entry, index, onUpdated }: { entry: Dia
           <button 
             onClick={handleDelete}
             disabled={isDeleting}
-            className="p-3 text-on-surface-variant/20 hover:text-red-500 transition-colors rounded-full hover:bg-red-50"
+            className="absolute top-8 right-8 p-3 text-on-surface-variant/20 hover:text-red-500 transition-colors rounded-full hover:bg-red-50"
             title="Admin: Delete Entry"
           >
             <Trash2 size={20} strokeWidth={1} />
@@ -146,11 +146,10 @@ export default function DiaryEntryCard({ entry, index, onUpdated }: { entry: Dia
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden w-full"
           >
-            <div className="mt-10 pt-8 space-y-6 border-l border-primary/10 ml-6 pl-10 text-left">
+            <div className="mt-12 pt-10 space-y-8 border-t border-primary/10 flex flex-col items-center">
               {replies.map((reply) => (
-                <div key={reply.id} className="relative">
-                  <div className="absolute -left-[45px] top-1/2 -translate-y-1/2 w-3 h-3 bg-primary/20 rounded-full" />
-                  <div className="bg-surface-container-low/50 p-6 rounded-xl relative overflow-hidden border border-primary/5">
+                <div key={reply.id} className="w-full max-w-xl">
+                  <div className="bg-surface-container-low/40 p-8 rounded-[2rem] relative overflow-hidden border border-primary/5 shadow-sm text-center">
                     <div className="flex justify-between mb-2">
                       <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">{reply.username}</span>
                       <span className="text-[10px] text-on-surface-variant opacity-30 uppercase font-bold tracking-widest">

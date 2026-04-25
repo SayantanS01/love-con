@@ -83,24 +83,24 @@ export default function MomentsPage() {
                 key={moment.id}
                 className={`flex flex-col w-full relative z-10 ${index % 2 !== 0 ? 'md:mt-48' : ''}`}
               >
-                <div className="space-y-12 text-center sm:text-left flex flex-col items-center sm:items-start">
-                  {moment.photoUrl && (
-                    <div className="w-full aspect-[4/5] overflow-hidden rounded-[3.5rem] shadow-vibrant relative group border-2 border-white/60">
-                      <img 
-                        src={moment.photoUrl} 
-                        alt={moment.title}
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-10 sm:p-14">
-                         <span className="text-white/80 text-[11px] uppercase font-bold tracking-[0.4em] flex items-center gap-3">
-                           <Camera size={16} /> Captured Reflection
-                         </span>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div className="space-y-8 px-6">
-                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-6 text-[11px] font-bold uppercase tracking-[0.4em] text-primary/60">
+  <div className="space-y-12 text-center flex flex-col items-center">
+    {moment.photoUrl && (
+      <div className="w-full aspect-[4/5] overflow-hidden rounded-[3.5rem] shadow-vibrant relative group border-2 border-white/60">
+        <img 
+          src={moment.photoUrl} 
+          alt={moment.title}
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-10 sm:p-14">
+           <span className="text-white/80 text-[11px] uppercase font-bold tracking-[0.4em] flex items-center gap-3">
+             <Camera size={16} /> Captured Reflection
+           </span>
+        </div>
+      </div>
+    )}
+    
+    <div className="space-y-8 px-6 flex flex-col items-center">
+      <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] font-bold uppercase tracking-[0.4em] text-primary/60">
                       <div className="flex items-center gap-2">
                         <Heart size={16} fill="currentColor" className="text-primary" /> {moment.user.username}
                       </div>
