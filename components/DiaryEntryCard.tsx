@@ -73,7 +73,6 @@ export default function DiaryEntryCard({ entry, index, onUpdated }: { entry: Dia
   }
 
   return (
-  return (
     <div className="surface-card p-10 shadow-premium group relative border border-primary/5 overflow-hidden text-center flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm">
       {/* Mood Glow Decor */}
       {entry.moodTag && (
